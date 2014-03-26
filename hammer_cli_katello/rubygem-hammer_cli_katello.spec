@@ -23,6 +23,8 @@ Requires: ruby(abi)
 Requires: ruby(rubygems)
 Requires: rubygem(hammer_cli)
 Requires: rubygem(hammer_cli_foreman_tasks)
+Requires: rubygem(hammer_cli_foreman) >= 0.1.0
+Requires: rubygem(hammer_cli_foreman) < 0.2.0
 BuildRequires: ruby(rubygems)
 %if 0%{?fedora}
 BuildRequires: rubygems-devel
