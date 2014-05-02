@@ -1,7 +1,7 @@
 %global gemname hammer_cli
 %global confdir hammer
 
-%if 0%{?rhel}
+%if 0%{?rhel} < 7
 %global gem_dir /usr/lib/ruby/gems/1.8
 %endif
 
@@ -17,7 +17,7 @@ URL: http://github.com/theforeman/hammer-cli
 Source0: %{gemname}-%{version}.gem
 Source1: cli_config.yml
 
-%if 0%{?rhel} == 6 || 0%{?fedora} < 19
+%if !( 0%{?rhel} > 6 || 0%{?fedora} > 18 )
 Requires: ruby(abi)
 %endif
 
@@ -35,10 +35,10 @@ Requires: rubygem(json)
 Requires: rubygem(fastercsv)
 Requires: rubygem(mime-types) < 2.0.0
 Requires: rubygem(apipie-bindings) >= 0.0.6
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} > 6
 BuildRequires: rubygems-devel
 %endif
-%if 0%{?rhel} == 6 || 0%{?fedora} < 19
+%if !( 0%{?rhel} > 6 || 0%{?fedora} > 18 )
 BuildRequires: ruby(abi)
 %endif
 BuildRequires: ruby(rubygems)

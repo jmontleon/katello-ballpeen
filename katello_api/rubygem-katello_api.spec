@@ -1,7 +1,7 @@
 %global pkg_name %{name}
 %global gem_name katello_api
 
-%if !(0%{?rhel} > 6 || 0%{?fedora} > 16)
+%if !(0%{?rhel} == 6 || 0%{?fedora} > 16)
 %global gem_dir /usr/lib/ruby/gems/1.8
 %global gem_instdir %{gem_dir}/gems/%{gem_name}-%{version}
 %global gem_libdir %{gem_instdir}/lib
@@ -24,13 +24,13 @@ Requires: rubygem(rest-client) >= 1.6.1
 Requires: rubygem(oauth) >= 0.4
 BuildRequires: ruby(rubygems)
 
-%if 0%{?fedora} > 19
+%if 0%{?fedora} > 19 || 0%{?rhel} > 6
 Requires: ruby(release) = 2.0.0
 Requires: rubygems
 BuildRequires: ruby(release) = 2.0.0
 Requires: rubygems-devel
 %else
-%if 0%{?rhel} > 6 || 0%{?fedora} > 16
+%if 0%{?fedora} > 16
 Requires: ruby(abi) = 1.9.1
 Requires: rubygems
 BuildRequires: ruby(abi) = 1.9.1

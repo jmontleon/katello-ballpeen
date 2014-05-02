@@ -1,7 +1,7 @@
 %global gemname hammer_cli_csv
 %global confdir hammer
 
-%if 0%{?rhel}
+%if 0%{?rhel} < 7
 %global gem_dir /usr/lib/ruby/gems/1.8
 %endif
 
@@ -17,7 +17,7 @@ URL: https://github.com/Katello/hammer-cli-csv
 Source0: %{gemname}-%{version}.gem
 Source1: csv.yml
 
-%if 0%{?rhel} == 6 || 0%{?fedora} < 19
+%if !( 0%{?rhel} > 6 || 0%{?fedora} > 18 )
 Requires: ruby(abi)
 %endif
 Requires: ruby(rubygems)
@@ -25,7 +25,7 @@ Requires: rubygem(hammer_cli)
 Requires: rubygem(foreman_api)
 Requires: rubygem(katello_api)
 BuildRequires: ruby(rubygems)
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} > 6
 BuildRequires: rubygems-devel
 %endif
 BuildRequires: ruby

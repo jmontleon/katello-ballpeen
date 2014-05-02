@@ -1,7 +1,7 @@
 %global gemname hammer_cli_katello
 %global confdir hammer
 
-%if 0%{?rhel}
+%if 0%{?rhel} < 7
 %global gem_dir /usr/lib/ruby/gems/1.8
 %endif
 
@@ -17,14 +17,14 @@ URL: http://github.com/theforeman/hammer-cli-katello
 Source0: %{gemname}-%{version}.gem
 Source1: katello.yml
 
-%if 0%{?rhel} == 6 || 0%{?fedora} < 19
+%if !( 0%{?rhel} > 6 || 0%{?fedora} > 18 )
 Requires: ruby(abi)
 %endif
 Requires: ruby(rubygems)
 Requires: rubygem(hammer_cli_foreman_tasks) >= 0.0.2
 Requires: rubygem(hammer_cli_foreman_tasks) < 0.1.0
 BuildRequires: ruby(rubygems)
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} > 6
 BuildRequires: rubygems-devel
 %endif
 BuildRequires: ruby

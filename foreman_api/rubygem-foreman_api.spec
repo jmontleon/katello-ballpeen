@@ -19,7 +19,7 @@ Group: Development/Languages
 License: MIT
 URL: http://github.com/theforeman/foreman_api
 Source0:  http://rubygems.org/downloads/%{gem_name}-%{version}.gem
-%if 0%{?fedora} > 18
+%if 0%{?fedora} > 18 || 0%{?rhel} > 6
 Requires: %{?scl_prefix}ruby(release)
 %else
 Requires: %{?scl_prefix}ruby(abi)
@@ -28,7 +28,7 @@ Requires: %{?scl_prefix}ruby(rubygems)
 Requires: %{?scl_prefix}rubygem(json)
 Requires: %{?scl_prefix}rubygem(rest-client) >= 1.6.1
 Requires: %{?scl_prefix}rubygem(oauth)
-%if 0%{?fedora} > 18
+%if 0%{?fedora} > 18 || 0%{?rhel} > 6
 BuildRequires: %{?scl_prefix}ruby(release)
 %else
 BuildRequires: %{?scl_prefix}ruby(abi)

@@ -3,7 +3,7 @@
 %{?scl:%scl_package rubygem-%{gem_name}}
 %{!?scl:%global pkg_name %{name}}
 
-%if !("%{?scl}" == "ruby193" || 0%{?rhel} > 6 || 0%{?fedora} > 16)
+%if !("%{?scl}" == "ruby193" || 0%{?rhel} == 6 || 0%{?fedora} > 16)
 %global gem_dir /usr/lib/ruby/gems/1.8
 %global gem_instdir %{gem_dir}/gems/%{gem_name}-%{version}
 %global gem_libdir %{gem_instdir}/lib
@@ -36,12 +36,12 @@ Requires: %{?scl_prefix}ruby-wrapper
 BuildRequires: %{?scl_prefix}ruby-wrapper
 %endif
 
-%if 0%{?fedora} > 18
+%if 0%{?fedora} > 18 || 0%{?rhel} > 6
 Requires: ruby(release) = 2.0.0
 BuildRequires: ruby(release) = 2.0.0
 BuildRequires: rubygems-devel
 %else
-%if "%{?scl}" == "ruby193" || 0%{?rhel} > 6 || 0%{?fedora} > 16
+%if "%{?scl}" == "ruby193" || 0%{?fedora} > 16
 Requires: %{?scl_prefix}ruby(abi) = 1.9.1
 BuildRequires: %{?scl_prefix}ruby(abi) = 1.9.1
 BuildRequires:  %{?scl_prefix}rubygems-devel
